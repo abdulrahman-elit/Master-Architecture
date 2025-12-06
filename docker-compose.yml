@@ -1,0 +1,11 @@
+services:
+  backend:
+    build: .
+    container_name: master_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./U8_Local_VSS/data:/app/U8_Local_VSS/data
+    environment:
+      # We use the IP you found (172.17.0.1)
+      - OLLAMA_HOST=http://172.17.0.1:11434

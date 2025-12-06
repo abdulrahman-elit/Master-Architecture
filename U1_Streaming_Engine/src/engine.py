@@ -11,9 +11,10 @@ from U0_Envelope.schemas.envelope import MessageEnvelope
 
 class StreamingEngine:
     def __init__(self, model_name="llama3"):
-        self.base_url = "http://localhost:11434/api/generate"
+        # HARDCODED FIX: Point directly to Docker Bridge IP
+        base_host = "http://172.17.0.1:11434"
+        self.base_url = f"{base_host}/api/generate"
         self.model = model_name
-
     def generate(self, envelope: MessageEnvelope):
         """
         Receives a U0 Envelope, validates it, and streams the AI response.
